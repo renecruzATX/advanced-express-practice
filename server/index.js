@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-app.get("/comments", function(req, res, next)
+app.get("/comments", function (req, res, next)
 {
     return res.json(comments);
 });
