@@ -1,15 +1,27 @@
-module.exports.list =  function list(request, response) {
-    return response.json([]);
+const contacts = require("../contacts");
+
+let contactId = 6;
+
+module.exports.list =  function list(req, res) {
+    return res.json(contacts);
 }
-module.exports.show =  function show(request, response) {
-    return response.json({theId: request.params.id});
+module.exports.show =  function show(req, res) {
+    let foundContact = contacts.find((id) => {
+        return id._id == req.params.id
+    });
+    return res.json(foundContact)
 }
-module.exports.create =  function create(request, response) {
-    return response.json({});
+module.exports.create =  function create(req, res) {
+    contacts.push(req.body);
+    contacts[contacts.length-1]._id = contactId++;  
+    console.log(req);
+    return res.json(contacts[contacts.length-1]);
 }
-module.exports.update =  function update(request, response) {
-    return response.json({theId: request.params.id});
+module.exports.update =  function update(req, res) {
+    return res.json({theId: re.params.id});
 }
-module.exports.remove =  function remove(request, response) {
-    return response.json({});
+module.exports.remove =  function remove(req, res) {
+    return res.json({});
 }
+
+
