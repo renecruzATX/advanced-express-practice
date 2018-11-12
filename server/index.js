@@ -68,5 +68,25 @@ app.get("/comments/:id",function (req,res,next) {
     return res.json(foundComment)
 });
 
-app.listen(3001, () => console.log('Server started on localhost:3001'));
+app.get("/contacts/:id",function (req,res,next) {
+  let foundContact = contacts.find((id) => {
+      return id._id == req.params.id
+  })
+  return res.json(foundContact)
+});
 
+app.get("/products/:id",function (req,res,next) {
+  let foundProduct = products.find((id) => {
+      return id._id == req.params.id
+  })
+  return res.json(foundProduct)
+});
+
+app.get("/vehicles/:id",function (req,res,next) {
+  let foundVehicle = vehicles.find((id) => {
+      return id._id == req.params.id
+  })
+  return res.json(foundVehicle)
+});
+
+app.listen(3001, () => console.log('Server started on localhost:3001'));
