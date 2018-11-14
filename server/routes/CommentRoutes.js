@@ -1,12 +1,10 @@
-let express =  require("express");
+const express = require("express");
 const router = express.Router();
-let {list,show,create,update,remove} = require( "../controllers/CommentController");
+const {list,show,create} = require( "../controllers/CommentController");
 
 
-router.get("/comments", list);
-router.get("/comments/:id", show);
-router.post("/comments", create);
-router.put("/comments/:id", update);
-router.delete("/comments/:id", remove);
+router.get("/", list);
+router.get("/:id", show);
+router.post("/", create);
 
-module.exports =  router;
+module.exports = router;
